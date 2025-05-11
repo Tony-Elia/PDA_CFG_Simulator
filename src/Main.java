@@ -16,6 +16,7 @@ public class Main {
         while (str != null) {
             switch (str) {
                 case "1" -> new Problems.PDA.Problem1(br, bw);
+                case "2" -> new Problems.PDA.Problem2(br, bw);
             }
             str = br.readLine();
         }
