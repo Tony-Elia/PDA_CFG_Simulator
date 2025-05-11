@@ -7,6 +7,7 @@ import java.util.*;
 
 
 public class PDA {
+    public static final char EPSILON = 'ε';
     int noOfStates;
     ArrayList<Character> inputAlphabet;
     ArrayList<Character> stackAlphabet;
@@ -31,7 +32,7 @@ public class PDA {
         if(cursor == str.length() && finalStates.contains(currState) && stack.isEmpty())
             return true; // Base Case
 
-        char stackTop = TransitionValue.EPSILON;
+        char stackTop = EPSILON;
         if(!stack.isEmpty()) stackTop = stack.peek();
         TransitionValue[] transitions = getAllTransitions(currState, cursor, stackTop);
 
@@ -40,7 +41,7 @@ public class PDA {
             if(transitions[i] != null) {
                 Stack<Character> newStack = (Stack<Character>) stack.clone();
                 char stackPush = transitions[i].stackPush();
-                if(stackPush != TransitionValue.EPSILON)
+                if(stackPush != EPSILON)
                     newStack.push(stackPush); // do not push epsilons
                 if (i < 2) // pop the stack top
                     newStack.pop();
@@ -73,11 +74,11 @@ public class PDA {
 
     public TransitionValue[] getAllTransitions(int state, int cursor, Character stackTop) {
         TransitionValue[] allTransitions = new TransitionValue[4];
-        char consume = (cursor >= str.length()) ? TransitionValue.EPSILON : str.charAt(cursor);
+        char consume = (cursor >= str.length()) ? EPSILON : str.charAt(cursor);
         allTransitions[0] = transitionFunction.getTransition(state, consume, stackTop); // consume the current char and pop stack
-        allTransitions[1] = transitionFunction.getTransition(state, TransitionValue.EPSILON, stackTop); // consume nothing and pop stack
-        allTransitions[2] = transitionFunction.getTransition(state, consume, TransitionValue.EPSILON); // consume current char and pop nothing
-        allTransitions[3] = transitionFunction.getTransition(state, TransitionValue.EPSILON, TransitionValue.EPSILON); // consume nothing and pop nothing
+        allTransitions[1] = transitionFunction.getTransition(state, EPSILON, stackTop); // consume nothing and pop stack
+        allTransitions[2] = transitionFunction.getTransition(state, consume, EPSILON); // consume current char and pop nothing
+        allTransitions[3] = transitionFunction.getTransition(state, EPSILON, EPSILON); // consume nothing and pop nothing
         return allTransitions;
     }
 

@@ -2,7 +2,6 @@ package Problems.PDA;
 
 import Automata.PDA;
 import Automata.TransitionFunction;
-import Automata.TransitionValue;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,12 +21,12 @@ public class Problem1 {
 
     public Problem1(BufferedReader br, BufferedWriter bw) throws IOException {
         TransitionFunction transitionFunction = new TransitionFunction();
-        transitionFunction.addTransition(0, 'a', TransitionValue.EPSILON, 0, 'a');
-        transitionFunction.addTransition(0, TransitionValue.EPSILON, TransitionValue.EPSILON, 1, TransitionValue.EPSILON);
-        transitionFunction.addTransition(1, 'b', TransitionValue.EPSILON, 1, TransitionValue.EPSILON);
-        transitionFunction.addTransition(1, TransitionValue.EPSILON, TransitionValue.EPSILON, 2, TransitionValue.EPSILON);
-        transitionFunction.addTransition(2, 'c', 'a', 2, TransitionValue.EPSILON);
-        transitionFunction.addTransition(2, TransitionValue.EPSILON, '$', 2, TransitionValue.EPSILON);
+        transitionFunction.addTransition(0, 'a', PDA.EPSILON, 0, 'a');
+        transitionFunction.addTransition(0, PDA.EPSILON, PDA.EPSILON, 1, PDA.EPSILON);
+        transitionFunction.addTransition(1, 'b', PDA.EPSILON, 1, PDA.EPSILON);
+        transitionFunction.addTransition(1, PDA.EPSILON, PDA.EPSILON, 2, PDA.EPSILON);
+        transitionFunction.addTransition(2, 'c', 'a', 2, PDA.EPSILON);
+        transitionFunction.addTransition(2, PDA.EPSILON, '$', 2, PDA.EPSILON);
 
         PDA pda = new PDA(3, inputAlphabet, stackAlphabet, transitionFunction,
                 startState, finalStates, stackInitial);
