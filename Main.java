@@ -17,6 +17,9 @@ public class Main {
             switch (str) {
                 case "1" -> new Problems.PDA.Problem1(br, bw);
                 case "2" -> new Problems.PDA.Problem2(br, bw);
+                case "3" -> new Problems.PDA.Problem3(br, bw);
+                case "4" -> new Problems.PDA.Problem4(br, bw);
+                case "5" -> new Problems.PDA.Problem5(br, bw);
             }
             str = br.readLine();
         }

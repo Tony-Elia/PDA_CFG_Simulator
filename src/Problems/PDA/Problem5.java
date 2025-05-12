@@ -12,7 +12,7 @@ import java.util.List;
 public class Problem5{
     ArrayList<Integer> finalStates = new ArrayList<>(List.of(2));
     ArrayList<Character> inputAlphabet = new ArrayList<>(Arrays.asList('a','b','c'));
-    ArrayList<Character> stackAlphabet = new ArrayList<>(Arrays.asList('$','B'));
+    ArrayList<Character> stackAlphabet = new ArrayList<>(Arrays.asList('$','b'));
 
     int startState = 0;
     char stackInitial = '$';
