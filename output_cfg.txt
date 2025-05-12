@@ -4,3 +4,10 @@ accepted
 not accepted
 not accepted
 x
+1
+accepted
+not accepted
+not accepted
+accepted
+accepted
+x

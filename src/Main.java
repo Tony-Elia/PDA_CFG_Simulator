@@ -33,6 +33,8 @@ public class Main {
         while (str != null) {
             switch (str) {
                 case "1" -> new Problems.CFG.Problem1(br, bw);
+                case "2"-> new Problems.CFG.Problem2(br, bw);
+                
             }
             str = br.readLine();
         }
