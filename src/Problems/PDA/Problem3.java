@@ -25,14 +25,15 @@ public class Problem3 {
 
         // Pop '{' when reading '}'
         transitionFunction.addTransition(0, '}', '{', 0, PDA.EPSILON);
-
+        // Skip the white space
+        transitionFunction.addTransition(0, ' ', PDA.EPSILON, 0, PDA.EPSILON);
         // If stack has only '$' and no input left, move to accepting state 1
-        transitionFunction.addTransition(0, PDA.EPSILON, '$', 1, '$');
+        transitionFunction.addTransition(0, PDA.EPSILON, '$', 1, PDA.EPSILON);
 
         PDA pda = new PDA(2, inputAlphabet, stackAlphabet, transitionFunction,
                           startState, finalStates, stackInitial);
 
-        bw.write("1\n");
+        bw.write("3\n");
         pda.solveProblem(br, bw);
     }
 }

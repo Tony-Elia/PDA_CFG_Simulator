@@ -10,25 +10,21 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-
-public class Problem2 {
-
+public class Problem4 {
     ArrayList<Character> terminals = new ArrayList<>(Arrays.asList('a','b'));
     ArrayList<Character> nonTerminals = new ArrayList<>(Arrays.asList('S'));
     Character startSymbol = 'S';
     Map<Character,ArrayList<String>> productionRules = new HashMap<>();
 
-    public Problem2(BufferedReader br, BufferedWriter bw) throws IOException {
-        ArrayList<String> production_S = new ArrayList<>(Arrays.asList(
-            "aSbb",
-              "bSab",
-              "bbSa" ,"SS",
-              CFG.EPSILON));
+    public Problem4(BufferedReader br, BufferedWriter bw) throws IOException {
+        ArrayList<String> production_S = new ArrayList<>(Arrays.asList("aaa", "aaSb"));
+
         productionRules.put('S', production_S);
+
 
         CFG cfg = new CFG(terminals,nonTerminals,startSymbol,productionRules);
 
-        bw.write("2\n");
+        bw.write("4\n");
         cfg.solveProblem(br, bw);
     }
 }

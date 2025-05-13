@@ -20,27 +20,16 @@ public class Problem5{
     public Problem5(BufferedReader br, BufferedWriter bw) throws IOException {
         TransitionFunction transitionFunction = new TransitionFunction();
 
-        // In state 0:
-        // Read 'a' → ignore (don't touch stack)
         transitionFunction.addTransition(0, 'a', PDA.EPSILON, 0, PDA.EPSILON);
-
-        // Read 'b' → push 'B' onto stack
-        transitionFunction.addTransition(0, 'b', PDA.EPSILON, 0, 'B');
-
-        // Transition to state 1 on first 'c'
-        transitionFunction.addTransition(0, 'c', PDA.EPSILON, 1, PDA.EPSILON);
-
-        // In state 1:
-        // Read 'c' and pop 'B'
-        transitionFunction.addTransition(1, 'c', 'B', 1, PDA.EPSILON);
-
-        // If stack has only initial symbol '$' and no input left, move to final state
+        transitionFunction.addTransition(0, 'b', PDA.EPSILON, 0, 'b');
+        transitionFunction.addTransition(0, PDA.EPSILON, PDA.EPSILON, 1, PDA.EPSILON);
+        transitionFunction.addTransition(1, 'c', 'b', 1, PDA.EPSILON);
         transitionFunction.addTransition(1, PDA.EPSILON, '$', 2, PDA.EPSILON);
 
         PDA pda = new PDA(3, inputAlphabet, stackAlphabet, transitionFunction,
                 startState, finalStates, stackInitial);
 
-        bw.write("1\n");
+        bw.write("5\n");
         pda.solveProblem(br, bw);
     }
 }
